@@ -7,6 +7,4 @@ Aplikacja została stworzona z wykorzystaniem azure oraz github żeby wszystkie 
 Strona ma zabezpieczenie htttps oraz zabezpieczony dostęp do danych.
 
 
-Projekt wykonany przez:
-Mariusz Borowiecki
-Patrycja Juszczyk
+Projekt wykonany przez: Mariusz Borowiecki, Patrycja Juszczyk
