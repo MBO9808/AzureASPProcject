@@ -1,17 +1,17 @@
 ﻿@model AzureASPProcject.PhoneRefBrands
 
 @{
-    ViewBag.Title = "Details";
+    ViewBag.Title = "Szczegóły";
 }
 
-<h2>Details</h2>
+<h2>Szczegóły marki</h2>
 
 <div>
-    <h4>PhoneRefBrands</h4>
+    <h4>Marka</h4>
     <hr />
     <dl class="dl-horizontal">
         <dt>
-            @Html.DisplayNameFor(model => model.PhoneRefBrandName)
+            @Html.LabelFor(model => model.PhoneRefBrandName, "Marka", htmlAttributes: new { @class = "control-label col-md-2" })
         </dt>
 
         <dd>
@@ -21,6 +21,6 @@
     </dl>
 </div>
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.PhoneRefBrandID }) |
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("Edytuj", "Edit", new { id = Model.PhoneRefBrandID }) |
+    @Html.ActionLink("Wróć do listy", "Index")
 </p>
