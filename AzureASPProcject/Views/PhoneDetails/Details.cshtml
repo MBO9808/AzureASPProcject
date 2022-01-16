@@ -1,0 +1,42 @@
+﻿@model AzureASPProcject.PhoneDetail
+
+@{
+    ViewBag.Title = "Szczegóły modelu telefonu";
+}
+
+<h2>Szczegóły modelu telefonu</h2>
+
+<div>
+    <h4>PhoneDetail</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.PhoneDescription)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PhoneDescription)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PhoneColor)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PhoneColor)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PhoneRefBrands.PhoneRefBrandName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PhoneRefBrands.PhoneRefBrandName)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edytuj", "Edit", new { id = Model.PhoneID }) |
+    @Html.ActionLink("Wróc do listy", "Index")
+</p>

@@ -1,0 +1,133 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="AzureProjectModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="PhoneDetail">
+          <Key>
+            <PropertyRef Name="PhoneID" />
+          </Key>
+          <Property Name="PhoneID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PhoneDescription" Type="varchar" MaxLength="50" />
+          <Property Name="PhoneBrandID" Type="int" />
+          <Property Name="PhoneColor" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="PhoneRefBrands">
+          <Key>
+            <PropertyRef Name="PhoneRefBrandID" />
+          </Key>
+          <Property Name="PhoneRefBrandID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PhoneRefBrandName" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <Association Name="FK__PhoneDeta__Phone__286302EC">
+          <End Role="PhoneRefBrands" Type="Self.PhoneRefBrands" Multiplicity="0..1" />
+          <End Role="PhoneDetail" Type="Self.PhoneDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PhoneRefBrands">
+              <PropertyRef Name="PhoneRefBrandID" />
+            </Principal>
+            <Dependent Role="PhoneDetail">
+              <PropertyRef Name="PhoneBrandID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="AzureProjectModelStoreContainer">
+          <EntitySet Name="PhoneDetail" EntityType="Self.PhoneDetail" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PhoneRefBrands" EntityType="Self.PhoneRefBrands" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__PhoneDeta__Phone__286302EC" Association="Self.FK__PhoneDeta__Phone__286302EC">
+            <End Role="PhoneRefBrands" EntitySet="PhoneRefBrands" />
+            <End Role="PhoneDetail" EntitySet="PhoneDetail" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="AzureProjectModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="PhoneDetail">
+          <Key>
+            <PropertyRef Name="PhoneID" />
+          </Key>
+          <Property Name="PhoneID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PhoneDescription" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="PhoneBrandID" Type="Int32" />
+          <Property Name="PhoneColor" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="PhoneRefBrands" Relationship="Self.FK__PhoneDeta__Phone__286302EC" FromRole="PhoneDetail" ToRole="PhoneRefBrands" />
+        </EntityType>
+        <EntityType Name="PhoneRefBrands">
+          <Key>
+            <PropertyRef Name="PhoneRefBrandID" />
+          </Key>
+          <Property Name="PhoneRefBrandID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PhoneRefBrandName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="PhoneDetail" Relationship="Self.FK__PhoneDeta__Phone__286302EC" FromRole="PhoneRefBrands" ToRole="PhoneDetail" />
+        </EntityType>
+        <Association Name="FK__PhoneDeta__Phone__286302EC">
+          <End Role="PhoneRefBrands" Type="Self.PhoneRefBrands" Multiplicity="0..1" />
+          <End Role="PhoneDetail" Type="Self.PhoneDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PhoneRefBrands">
+              <PropertyRef Name="PhoneRefBrandID" />
+            </Principal>
+            <Dependent Role="PhoneDetail">
+              <PropertyRef Name="PhoneBrandID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="AzureProjectEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="PhoneDetail" EntityType="Self.PhoneDetail" />
+          <EntitySet Name="PhoneRefBrands" EntityType="Self.PhoneRefBrands" />
+          <AssociationSet Name="FK__PhoneDeta__Phone__286302EC" Association="Self.FK__PhoneDeta__Phone__286302EC">
+            <End Role="PhoneRefBrands" EntitySet="PhoneRefBrands" />
+            <End Role="PhoneDetail" EntitySet="PhoneDetail" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="AzureProjectModelStoreContainer" CdmEntityContainer="AzureProjectEntities">
+          <EntitySetMapping Name="PhoneDetail">
+            <EntityTypeMapping TypeName="AzureProjectModel.PhoneDetail">
+              <MappingFragment StoreEntitySet="PhoneDetail">
+                <ScalarProperty Name="PhoneID" ColumnName="PhoneID" />
+                <ScalarProperty Name="PhoneDescription" ColumnName="PhoneDescription" />
+                <ScalarProperty Name="PhoneBrandID" ColumnName="PhoneBrandID" />
+                <ScalarProperty Name="PhoneColor" ColumnName="PhoneColor" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PhoneRefBrands">
+            <EntityTypeMapping TypeName="AzureProjectModel.PhoneRefBrands">
+              <MappingFragment StoreEntitySet="PhoneRefBrands">
+                <ScalarProperty Name="PhoneRefBrandID" ColumnName="PhoneRefBrandID" />
+                <ScalarProperty Name="PhoneRefBrandName" ColumnName="PhoneRefBrandName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

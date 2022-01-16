@@ -1,0 +1,15 @@
+﻿@{
+    ViewBag.Title = "Strona główna";
+}
+
+<div class="jumbotron">
+    <h1>Projekt zaliczeniowy</h1>
+    <p class="lead">Przetwarzanie w chmurach - Baza telefonów </p>
+</div>
+
+<div>
+
+    @Html.ActionLink("Lista modeli telefonów", "Index", "PhoneDetails") <br />
+    @Html.ActionLink("Lista marek telefonów", "Index", "PhoneRefBrands")
+
+</div>

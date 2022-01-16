@@ -1,0 +1,45 @@
+﻿@model IEnumerable<AzureASPProcject.PhoneDetail>
+
+@{
+    ViewBag.Title = "Lista modeli telefonów";
+}
+
+<h2>Lista modeli telefonów</h2>
+
+<p>
+    @Html.ActionLink("Dodaj nowy", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.PhoneDescription)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PhoneColor)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PhoneRefBrands.PhoneRefBrandName)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.PhoneDescription)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PhoneColor)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PhoneRefBrands.PhoneRefBrandName)
+        </td>
+        <td>
+            @Html.ActionLink("Edytuj", "Edit", new { id=item.PhoneID }) |
+            @Html.ActionLink("Szczegóły", "Details", new { id=item.PhoneID }) |
+            @Html.ActionLink("Usuń", "Delete", new { id=item.PhoneID })
+        </td>
+    </tr>
+}
+
+</table>
